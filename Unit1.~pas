@@ -1,0 +1,285 @@
+unit Unit1;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  StdCtrls, ExtCtrls;
+ function Inp32(PortAdr: word): byte; stdcall; external 'inpout32.dll';
+ function Out32(PortAdr: word; Data: byte): byte; stdcall; external 'inpout32.dll';
+
+type
+  TForm1 = class(TForm)
+    Button1: TButton;
+    Button2: TButton;
+    Button3: TButton;
+    Button4: TButton;
+    Button5: TButton;
+    Button6: TButton;
+    Button7: TButton;
+    Button8: TButton;
+    Button9: TButton;
+    Button10: TButton;
+    Button11: TButton;
+    Button12: TButton;
+    Timer1: TTimer;
+    Shape1: TShape;
+    Shape2: TShape;
+    Shape3: TShape;
+    Shape4: TShape;
+    Shape5: TShape;
+    procedure Button1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
+    procedure Button5Click(Sender: TObject);
+    procedure Button6Click(Sender: TObject);
+    procedure Button7Click(Sender: TObject);
+    procedure Button8Click(Sender: TObject);
+    procedure Button9Click(Sender: TObject);
+    procedure Button10Click(Sender: TObject);
+    procedure Button11Click(Sender: TObject);
+    procedure Button12Click(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+  f1,f2,f3,f0:Boolean;
+  f10,f11,f12,f13,f14,f15,f16,f17:Boolean;
+  outbyte,outbyte1,dataout,datain:Byte;
+implementation
+
+{$R *.DFM}
+
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+    If f1
+     Then Begin
+           f1:=false;
+           outbyte:=outbyte And $D;
+           outbyte1:=(outbyte Xor 11)And 15;
+           out32($37A,outbyte1);
+          End
+     Else Begin
+           f1:=True;
+           outbyte:=outbyte Or 2;
+           outbyte1:=(outbyte Xor 11)And 15;
+           out32($37A,outbyte1);
+          End;
+end;
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+ f1:=false;
+ f2:=false;
+ f3:=false;
+ f0:=false;
+ outbyte:=0;
+ out32($37A,$B);
+end;
+
+procedure TForm1.Button2Click(Sender: TObject);
+begin
+    If f2
+     Then Begin
+           f2:=false;
+           outbyte:=outbyte And $B;
+           outbyte1:=(outbyte Xor 11)And 15;
+           out32($37A,outbyte1);
+          End
+     Else Begin
+           f2:=True;
+           outbyte:=outbyte Or 4;
+           outbyte1:=(outbyte Xor 11)And 15;
+           out32($37A,outbyte1);
+          End;
+
+end;
+
+procedure TForm1.Button3Click(Sender: TObject);
+begin
+    If f3
+     Then Begin
+           f3:=false;
+           outbyte:=outbyte And $7;
+           outbyte1:=(outbyte Xor 11)And 15;
+           out32($37A,outbyte1);
+          End
+     Else Begin
+           f3:=True;
+           outbyte:=outbyte Or 8;
+           outbyte1:=(outbyte Xor 11)And 15;
+           out32($37A,outbyte1);
+          End;
+
+end;
+
+procedure TForm1.Button4Click(Sender: TObject);
+begin
+    If f0
+     Then Begin
+           f0:=false;
+           outbyte:=outbyte And $E;
+           outbyte1:=(outbyte Xor 11)And 15;
+           out32($37A,outbyte1);
+          End
+     Else Begin
+           f0:=True;
+           outbyte:=outbyte Or 1;
+           outbyte1:=(outbyte Xor 11)And 15;
+           out32($37A,outbyte1);
+          End;
+
+end;
+
+procedure TForm1.Button5Click(Sender: TObject);
+begin
+    If f10
+     Then Begin
+           f10:=False;
+           dataout:=dataout And $FE;
+           out32($378,dataout)
+          End
+     Else Begin
+           f10:=True;
+           dataout:=dataout Or $1;
+           out32($378,dataout)
+          End;
+
+end;
+
+procedure TForm1.Button6Click(Sender: TObject);
+begin
+    If f11
+     Then Begin
+           f11:=False;
+           dataout:=dataout And $FD;
+           out32($378,dataout)
+          End
+     Else Begin
+           f11:=True;
+           dataout:=dataout Or $2;
+           out32($378,dataout)
+          End;
+
+end;
+
+procedure TForm1.Button7Click(Sender: TObject);
+begin
+    If f12
+     Then Begin
+           f12:=False;
+           dataout:=dataout And $FB;
+           out32($378,dataout)
+          End
+     Else Begin
+           f12:=True;
+           dataout:=dataout Or $4;
+           out32($378,dataout)
+          End;
+
+end;
+
+procedure TForm1.Button8Click(Sender: TObject);
+begin
+    If f13
+     Then Begin
+           f13:=False;
+           dataout:=dataout And $F7;
+           out32($378,dataout)
+          End
+     Else Begin
+           f13:=True;
+           dataout:=dataout Or $8;
+           out32($378,dataout)
+          End;
+end;
+
+procedure TForm1.Button9Click(Sender: TObject);
+begin
+    If f14
+     Then Begin
+           f14:=False;
+           dataout:=dataout And $EF;
+           out32($378,dataout)
+          End
+     Else Begin
+           f14:=True;
+           dataout:=dataout Or $10;
+           out32($378,dataout)
+          End;
+
+end;
+
+procedure TForm1.Button10Click(Sender: TObject);
+begin
+    If f15
+     Then Begin
+           f15:=False;
+           dataout:=dataout And $DF;
+           out32($378,dataout)
+          End
+     Else Begin
+           f15:=True;
+           dataout:=dataout Or $20;
+           out32($378,dataout)
+          End;
+end;
+
+procedure TForm1.Button11Click(Sender: TObject);
+begin
+    If f16
+     Then Begin
+           f16:=False;
+           dataout:=dataout And $BF;
+           out32($378,dataout)
+          End
+     Else Begin
+           f16:=True;
+           dataout:=dataout Or $40;
+           out32($378,dataout)
+          End;
+end;
+
+procedure TForm1.Button12Click(Sender: TObject);
+begin
+    If f17
+     Then Begin
+           f17:=False;
+           dataout:=dataout And $7F;
+           out32($378,dataout)
+          End
+     Else Begin
+           f17:=True;
+           dataout:=dataout Or $80;
+           out32($378,dataout)
+          End;
+end;
+
+procedure TForm1.Timer1Timer(Sender: TObject);
+begin
+  datain:=inp32($379);
+   If (datain And $8)=$8
+    Then shape1.Brush.Color:=ClGreen
+    Else shape1.Brush.Color:=ClRed;
+   If (datain And $10)=$10
+    Then shape2.Brush.Color:=ClGreen
+    Else shape2.Brush.Color:=ClRed;
+   If (datain And $20)=$20
+    Then shape3.Brush.Color:=ClGreen
+    Else shape3.Brush.Color:=ClRed;
+   If (datain And $40)=$40
+    Then shape4.Brush.Color:=ClGreen
+    Else shape4.Brush.Color:=ClRed;
+   If (datain And $80)=$0
+    Then shape5.Brush.Color:=ClGreen
+    Else shape5.Brush.Color:=ClRed;
+end;
+
+end.
